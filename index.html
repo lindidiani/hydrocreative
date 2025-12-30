@@ -270,6 +270,17 @@ function kirimWA() {
     const brief = document.getElementById("brief") ? document.getElementById("brief").value : "";
     const inputLainnya = document.getElementById("inputLainnya") ? document.getElementById("inputLainnya").value : "";
 
+     // VALIDASI
+    if (!nama || !wa || !alamat || !kebutuhan || !brief) {
+        alert("Mohon lengkapi semua data sebelum mengirim pesanan.");
+        return;
+    }
+
+    if (kebutuhan === "Lainnya" && !lainnya) {
+        alert("Mohon isi kebutuhan desain lainnya.");
+        return;
+    }
+    
     const kebutuhanFix = kebutuhan === "Lainnya" ? lainnya : kebutuhan;
 
     const pesan = [
@@ -303,4 +314,5 @@ function kirimWA() {
 
 </body>
 </html>
+
 
