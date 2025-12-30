@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Reservasi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-image: url("background.png");
+    }
+
+    .header {
+        background: #1f3c68;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 30px auto;
+        background: rgba(31, 60, 104, 0.6);
+        padding: 30px;
+        border-radius: 10px;
+        color: white;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        color: #ffffff;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    input, select, textarea {
+        width: 96%;
+        padding: 12px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .date-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .date-group input {
+        width: 100%;
+    }
+
+    textarea {
+        resize: none;
+        height: 80px;
+    }
+
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper label {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top:5px;
+}
+
+
+    .btn {
+        margin-top: 25px;
+        background: #1f3c68;
+        color: white;
+        padding: 15px;
+        border: none;
+        width: 100%;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #1976d2;
+    }
+    .brand {
+    font-size: 22px;
+    font-weight: bold;
+    }
+    .hydro {
+    color: #4fc3f7; /* biru muda */
+    }
+
+    .creative {
+    color: #ffffff; /* putih */
+    margin-left: -5px;
+    }
+    
+    .hidden { display: none; }
+    .terms {
+    max-width: 800px;
+    margin-top: 40px;
+    margin-bottom: -20px;
+    padding: 5px;
+}
+
+.terms-title {
+    font-size: 20px;
+    margin-top: -30px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.terms-list {
+    list-style: none;
+}
+
+.terms-list li {
+    position: relative;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+/* Icon centang hijau */
+.terms-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+button {
+            background: #25D366;
+            color: white;
+            border: none;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="brand">
+        <span class="hydro">Hydro</span>
+        <span class="creative">Creative</span>
+</div>
+
+</div>
+
+<h1 style="color: #1f3c68;">FORM PEMESANAN</h1>
+<p style="margin-top: -5px;">Silakan isi data di bawah dengan benar</p>
+
+<div class="container">
+    <form id="reservasiForm">
+        <label>Nama</label>
+        <input type="text" id="nama" required>
+
+        <label>Nomor WA</label>
+        <input type="tel" id="wa" required>
+
+        <label>Alamat</label>
+        <input type="text" id="alamat" required>
+
+        <label>Tanggal Pemesanan</label>
+        <input type="date" id="checkin" required>
+
+        <label>Jumlah Pemesanan</label>
+        <input type="text" id="checkout" required>
+
+        <label>Kebutuhan Desain</label>
+        <select id="kebutuhan" onchange="cekLainnya()" required style="width: 100%;">
+            <option value="">-- Pilih --</option>
+            <option value="Logo">Logo</option>
+            <option value="Ilustrasi Kaos">Ilustrasi Kaos</option>
+            <option value="Banner">Banner</option>
+            <option value="Feed Instagram">Feed Instagram</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+
+        <div id="inputLainnya" class="hidden">
+            <label>Kebutuhan Lainnya</label>
+            <input type="text" id="lainnya">
+        </div>
+        <label>Brief Pemesanan</label>
+        <textarea 
+        id="brief"
+        placeholder="Tuliskan detail pemesanan anda"
+        ></textarea>
+        
+        <div class="terms">
+        <div class="terms-title">Catatan!</div>
+
+        <ul class="info-list">
+        <li>Untuk pemesanan diwajibkan melakukan DP minimal 50%.</li>
+        <li>Setelah melakukan DP, silakan mengirimkan bukti pembayaran ke WhatsApp admin.</li>
+        <li>Jika pemesanan dibatalkan, DP yang telah dibayarkan akan hangus.</li>
+        <li>Harga akan didiskusikan langsung dengan admin melalui WhatsApp.</li>
+    
+        </ul>
+
+</div>
+        <div class="checkbox-wrapper">
+    <input type="checkbox" id="setuju" required>
+    <label for="setuju">Saya telah membaca ketentuan yang ada</label>
+</div>
+
+
+       <!-- PENTING: type="button" -->
+        <button class="btn" onclick="kirimWA()">Kirim ke WhatsApp</button>
+    </form>
+</div>
+    </form>
+</div>
+
+
+<script>
+function cekLainnya() {
+    const kebutuhan = document.getElementById("kebutuhan").value;
+    const inputLainnya = document.getElementById("inputLainnya");
+
+    if (kebutuhan === "Lainnya") {
+        inputLainnya.style.display = "block";
+    } else {
+        inputLainnya.style.display = "none";
+    }
+}
+
+
+function kirimWA() {
+    const nama = document.getElementById("nama").value;
+    const wa = document.getElementById("wa").value;
+    const alamat = document.getElementById("alamat").value;
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+    const kebutuhan = document.getElementById("kebutuhan") ? document.getElementById("kebutuhan").value : "";
+    const brief = document.getElementById("brief") ? document.getElementById("brief").value : "";
+    const inputLainnya = document.getElementById("inputLainnya") ? document.getElementById("inputLainnya").value : "";
+
+    const kebutuhanFix = kebutuhan === "Lainnya" ? lainnya : kebutuhan;
+
+    const pesan = [
+    "Halo, saya ingin memesan desain.",
+    "",
+    `Nama: ${nama}`,
+    `No. Telp: ${wa}`,
+    `Alamat: ${alamat}`,
+    `Tanggal Pemesanan: ${checkin}`,
+    `Jumlah Pemesanan: ${checkout}`,
+    `Kebutuhan Desain: ${kebutuhanFix}`,
+    `Brief Pemesanan: ${brief}`,
+    "",
+    "Catatan:",
+    "1. Untuk pemesanan diwajibkan melakukan DP minimal 50%.",
+    "2. Setelah melakukan DP, silakan mengirimkan bukti pembayaran ke WhatsApp admin.",
+    "3. Jika pemesanan dibatalkan, DP yang telah dibayarkan akan hangus.",
+    "4. Harga akan didiskusikan langsung dengan admin melalui WhatsApp."
+    ].join("\n");
+
+
+    const urlWA = `https://wa.me/6287822137435?text=${encodeURIComponent(pesan)}`;
+    window.open(urlWA, "_blank");
+}
+</script>
+
+
+
+
+
+
+</body>
+</html>
